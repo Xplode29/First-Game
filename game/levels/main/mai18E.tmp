@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://qc5s7joicoyb"]
+
+[ext_resource type="Script" path="res://game/levels/main/main.gd" id="1_ey0c8"]
+[ext_resource type="Texture2D" uid="uid://d0iq0xj661ff8" path="res://pack/samples/Sample_urban.png" id="2_lajvf"]
+[ext_resource type="AudioStream" uid="uid://bfnv5h872iowk" path="res://game/levels/main/Y2meta.app - Lavender Town (Original Japanese Version from Pokemon Red and Green) (128 kbps).mp3" id="2_nllxn"]
+[ext_resource type="PackedScene" uid="uid://bgxf2wq5c27w8" path="res://game/items/item.tscn" id="3_vlwgw"]
+[ext_resource type="PackedScene" uid="uid://bunq13fo2wf5x" path="res://game/entities/player/character.tscn" id="3_x3bsh"]
+[ext_resource type="PackedScene" uid="uid://c33hok6rcxwvs" path="res://game/hud/hud.tscn" id="4_yan74"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtbyt"]
+size = Vector2(918, 7.58333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eym7w"]
+size = Vector2(9.00002, 499.833)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ey0c8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nllxn")
+volume_db = -10.0
+autoplay = true
+max_distance = 2e+07
+attenuation = 0.0412347
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_lajvf")
+
+[node name="Limits" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Limits"]
+scale = Vector2(6, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/StaticBody2D"]
+position = Vector2(0, -253.792)
+shape = SubResource("RectangleShape2D_gtbyt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limits/StaticBody2D"]
+position = Vector2(0, 253.667)
+shape = SubResource("RectangleShape2D_gtbyt")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limits/StaticBody2D"]
+position = Vector2(-454.5, 0)
+shape = SubResource("RectangleShape2D_eym7w")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Limits/StaticBody2D"]
+position = Vector2(454.5, 0)
+shape = SubResource("RectangleShape2D_eym7w")
+
+[node name="Item1" parent="." instance=ExtResource("3_vlwgw")]
+position = Vector2(-1980, 630)
+
+[node name="Item2" parent="." instance=ExtResource("3_vlwgw")]
+position = Vector2(-96, -1341)
+
+[node name="Item3" parent="." instance=ExtResource("3_vlwgw")]
+position = Vector2(2265, 549)
+
+[node name="Player" parent="." instance=ExtResource("3_x3bsh")]
+
+[node name="HUD" parent="." instance=ExtResource("4_yan74")]
+
+[node name="WaveTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

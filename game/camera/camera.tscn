@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5tng6msl2een"]
+
+[ext_resource type="Shader" path="res://game/shaders/vignette.gdshader" id="1_5a1y0"]
+[ext_resource type="Texture2D" uid="uid://df7rsavaqxrwt" path="res://game/shaders/vignette.png" id="2_5hkua"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdwd1"]
+shader = ExtResource("1_5a1y0")
+shader_parameter/vignette = ExtResource("2_5hkua")
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2(-11, 5)
+zoom = Vector2(0.5, 0.5)
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="vignette" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_hdwd1")
+offset_right = 1280.0
+offset_bottom = 720.0

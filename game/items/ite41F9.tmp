@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgxf2wq5c27w8"]
+
+[ext_resource type="Texture2D" uid="uid://fhhd02bclr8o" path="res://game/items/shotgun.png" id="1_gvpty"]
+[ext_resource type="Script" path="res://game/items/item.gd" id="1_r43wc"]
+[ext_resource type="Shader" path="res://game/shaders/hit.gdshader" id="2_p3gb3"]
+[ext_resource type="Texture2D" uid="uid://cujlr72i7jnrn" path="res://game/items/shadow.png" id="3_wcjxn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eg6h2"]
+shader = ExtResource("2_p3gb3")
+shader_parameter/flash_color = Color(0.309804, 0.309804, 0.309804, 1)
+shader_parameter/flash_amount = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4tjn"]
+size = Vector2(84, 56)
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_r43wc")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_eg6h2")
+position = Vector2(0, -6)
+scale = Vector2(6, 6)
+texture = ExtResource("3_wcjxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k4tjn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_gvpty")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

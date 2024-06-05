@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw2afysdk0jco"]
+
+[ext_resource type="Texture2D" uid="uid://c2iv7mp4csdqf" path="res://game/entities/player/gun/bullet/bullet.png" id="1_b8uqa"]
+[ext_resource type="Script" path="res://game/entities/player/gun/bullet/bullet.gd" id="1_pwfgq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ammn"]
+radius = 2.0
+height = 16.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_pwfgq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4ammn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.785398
+texture = ExtResource("1_b8uqa")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

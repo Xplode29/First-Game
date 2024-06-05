@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c33hok6rcxwvs"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -48.0
+offset_right = 164.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 70
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillCount" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -416.0
+offset_bottom = 64.0
+grow_horizontal = 0
+scale = Vector2(1, 0.99597)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 40
+text = "0/0"
+horizontal_alignment = 2

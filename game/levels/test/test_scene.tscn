@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dweto7iynrtel"]
+
+[ext_resource type="Script" path="res://game/levels/test/test_scene.gd" id="1_42v1m"]
+[ext_resource type="PackedScene" uid="uid://bunq13fo2wf5x" path="res://game/entities/player/character.tscn" id="1_hovvc"]
+[ext_resource type="PackedScene" uid="uid://bgxf2wq5c27w8" path="res://game/items/item.tscn" id="2_8300t"]
+[ext_resource type="PackedScene" uid="uid://dbug3bkunrv5h" path="res://game/entities/enemy/enemy.tscn" id="3_na16g"]
+
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_42v1m")
+
+[node name="Player" parent="." instance=ExtResource("1_hovvc")]
+
+[node name="Item1" parent="." instance=ExtResource("2_8300t")]
+position = Vector2(-191, 169)
+
+[node name="Item2" parent="." instance=ExtResource("2_8300t")]
+position = Vector2(-12, -167)
+
+[node name="Item3" parent="." instance=ExtResource("2_8300t")]
+position = Vector2(235, 154)
+
+[node name="Enemy" parent="." instance=ExtResource("3_na16g")]
+position = Vector2(-236, -99)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_na16g")]
+position = Vector2(543, -32)
